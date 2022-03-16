@@ -37,10 +37,21 @@ router.get('/:id', (req,res) => {
 });
 
 router.post('/', async (req, res) => {
-    console.log('req.body:', req.body);
-    let gameProto = req.body;
-
-    res.json(gameProto);
+    const newGame = req.body.game;
+    Games.create({
+        gameName: newGame.gameName,
+        publishDate: newGame.publishDate,
+        fileSize: newGame.fileSize,
+        genre: newGame.genre,
+        gameId: newGame.gameId,
+    })
+    .then(user => {
+        res.json(game);
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(404).send(error);
+    })
 });
 
 module.exports = router;
