@@ -5,9 +5,6 @@ const Games = connection.define(
   'Game',
   {
     gameName: { type: DataTypes.STRING, allowNull: false },
-    publishDate: DataTypes.DATEONLY,
-    fileSize: DataTypes.INTEGER,
-    genre: DataTypes.STRING,
     gameId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -79,7 +76,56 @@ Games.belongsTo(Genres, { as: 'GenreRef', foreignKey: 'genreId'});
 Publishers.hasMany(Games, { as: 'All_Games' }); 
 
 connection
-    .sync({})
+    .sync({force: true})
+    .then(() => {
+      Genres.create({
+        genreName: 'Horror'
+      })
+    })
+    .then(() => {
+      Genres.create({
+        genreName: 'Action'
+      })
+    })
+    .then(() => {
+      Platforms.create({
+        platformName: 'Xbox'
+      })
+    })
+    .then(() => {
+      Platforms.create({
+        platformName: 'Pc'
+      })
+    })
+    .then(() => {
+      Platforms.create({
+        platformName: 'Playstation'
+      })
+    })
+    .then(() => {
+      Publishers.create({
+        publisherName: 'Xbox Games Studios'
+      })
+    })
+    .then(() => {
+      Publishers.create({
+        publisherName: 'Blizzard'
+      })
+    })
+    .then(() => {
+      Games.create({
+        gameName: 'Overwatch',
+        publisherId: 2,
+        genreId: 2
+      })
+    })
+    .then(() => {
+      Games.create({
+        gameName: 'Age Of Empires',
+        publisherId: 1,
+        genreId: 1
+      })
+    })
     .then(() => {
         console.log("Models Ran On Database")
     })
