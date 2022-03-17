@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/bootstrap.css">
+  <title>List Books</title>
+</head>
+
+<body>
+  <main class="container">
+    <header>
+      <h1>List Publishers</h1>
+      <hr>
+    </header>
+    <nav class="row">
+      <div class="col">
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="index.html">Home</a></li>
+          <li class="list-inline-item">List Publishers</li>
+          <li class="list-inline-item"><a href="add-publisher.html">Add a publisher</a></li>
+          <li class="list-inline-item"><a href="edit-publisher.html">Edit a publisher</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+      <div class="col" id="publishers-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Publisher</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="javascripts/list-publishers.js" type="module"></script>
+</body>
+
+</html>

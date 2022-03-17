@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <title>Add a Publisher</title>
+</head>
+
+<body>
+  <main class="container">
+    <header>
+      <h1>Add a publisher</h1>
+      <hr>
+    </header>
+    <nav class="row">
+      <div class="col">
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="index.html">Home</a></li>
+          <li class="list-inline-item"><a href="list-publishers.html">List Publishers</a></li>
+          <li class="list-inline-item">Add a publisher</li>
+          <li class="list-inline-item"><a href="edit-publishers.html">Edit a publisher</a></li>
+        </ul>
+      </div>
+    </nav>
+    <form id="add-publisher-form">
+      <div>
+        <label for="publisherName" class="form-label">Name</label>
+        <input type="text" name="publisherName" id="publisherName" class="form-control" required>
+      </div>
+      <div class="mt-2"><button type="submit" class="btn btn-primary">Add Publisher</button></div>
+    </form>
+    <div class="row">
+      <div class="col" id="notifications"></div>
+    </div>
+  </main>
+  <script src="./javascripts/add-publisher.js" type="module"></script>
+</body>
+
+</html>

@@ -5,15 +5,6 @@ const Games = connection.define(
   'Game',
   {
     gameName: { type: DataTypes.STRING, allowNull: false },
-    publishDate: DataTypes.DATEONLY,
-    fileSize: DataTypes.INTEGER,
-    genre: DataTypes.STRING,
-    gameId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-    },
   },
   {
     underscored: true,
@@ -25,12 +16,6 @@ const Publishers = connection.define(
   'Publisher',
   {
     publisherName: { type: DataTypes.STRING, allowNull: false },
-    publisherId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-    },
   },
   {
     underscored: true,
@@ -42,12 +27,6 @@ const Platforms = connection.define(
     'Platform',
     {
       platformName: { type: DataTypes.STRING, allowNull: false },
-      platformId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-      },
     },
     {
       underscored: true,
@@ -59,12 +38,6 @@ const Genres = connection.define(
     'Genre',
     {
       genreName: { type: DataTypes.STRING, allowNull: false },
-      genreId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-      },
     },
     {
       underscored: true,
@@ -72,14 +45,82 @@ const Genres = connection.define(
     }
 );  
 
-Games.belongsTo(Publishers, { as: 'PublisherRef', foreignKey: 'publisherId'}); 
-Games.hasMany(Platforms, { as: "All_Platforms" }); 
-Genres.hasMany(Games, { as: "All_Games" }); 
+Games.belongsToMany(Publishers, { as: 'Publishers', through: 'GamePublishers'});
+Publishers.belongsToMany(Games, { as: 'Games', through: 'GamePublishers'});
 Games.belongsTo(Genres, { as: 'GenreRef', foreignKey: 'genreId'}); 
-Publishers.hasMany(Games, { as: 'All_Games' }); 
+Games.belongsToMany(Platforms, { as: 'Platforms', through: 'GamePlatforms'});
+Platforms.belongsToMany(Games, { as: 'Games', through: 'GamePlatforms'});
 
 connection
-    .sync({})
+    .sync({
+      
+    })
+    /*.then(() => {
+      Genres.create({
+        genreName: 'Horror'
+      })
+    })
+    .then(() => {
+      Genres.create({
+        genreName: 'Action'
+      })
+    })
+    .then(() => {
+      Platforms.create({
+        platformName: 'Xbox'
+      })
+    })
+    .then(() => {
+      Platforms.create({
+        platformName: 'Pc'
+      })
+    })
+    .then(() => {
+      Platforms.create({
+        platformName: 'Playstation'
+      })
+    })
+    .then(() => {
+      Publishers.create({
+        publisherName: 'Xbox Games Studios'
+      })
+    })
+    .then(() => {
+      Publishers.create({
+        publisherName: 'Blizzard'
+      })
+    })
+    .then(() => {
+      Games.create({
+        gameName: 'Overwatch',
+        genreId: 2
+      }).then((games) => {
+        games.setPlatform([2])
+        games.setPlatform([1])
+        games.setPublisher([2])
+      })
+    })
+    .then(() => {
+      Games.create({
+        gameName: 'Age Of Empires',
+        genreId: 1
+      }).then((games) => {
+        games.setPlatform([1])
+         games.setPlatform([3])
+        games.setPublisher([1])
+      })
+    })
+    .then(() => {
+      Games.create({
+        gameName: 'Halo',
+        genreId: 2
+      }).then((games) => {
+        games.setPlatform([1])
+        games.setPlatform([2])
+        games.setPlatform([3])
+        games.setPublisher([1])
+      })
+    })*/
     .then(() => {
         console.log("Models Ran On Database")
     })
