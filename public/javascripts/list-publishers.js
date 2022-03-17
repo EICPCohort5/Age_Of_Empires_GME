@@ -9,7 +9,7 @@ import {get, post} from 'axios';
 3) Use Webpack
 */
 
-import { restServer } from './config.js';
+import { publisherUrls } from './config.js';
 
 async function fetchData(url) {
   try {
@@ -35,7 +35,8 @@ function renderTable(publishers) {
     row.insertAdjacentHTML(
       `beforeend`,
       `
-    <td>${publisher.name}</td>
+    <td>${publisher.id}</td>
+    <td>${publisher.publisherName}</td>
     `
     );
     rows.push(row);
@@ -43,4 +44,4 @@ function renderTable(publishers) {
   tableBody.append(...rows);
 }
 
-fetchData(restServer);
+fetchData(publisherUrls);

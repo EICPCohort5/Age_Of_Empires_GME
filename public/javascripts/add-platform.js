@@ -1,19 +1,19 @@
-import { publisherUrls } from './config.js';
-let form = document.querySelector('#add-publisher-form');
+import { platformsUrl } from './config.js';
+let form = document.querySelector('#add-platform-form');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   let submitButton = form.querySelector('[type=submit]');
   submitButton.disabled = true;
-  let publisherFormData = new FormData(form);
-  let publisher = {};
-  for (let [key, value] of publisherFormData.entries()) {
-    publisher[key] = value;
+  let platformFormData = new FormData(form);
+  let platform = {};
+  for (let [key, value] of platformFormData.entries()) {
+    platform[key] = value;
   }
-  console.log(publisher)
-  fetch(publisherUrls, {
+  
+  fetch(platformsUrl, {
     method: 'POST',
-    body: JSON.stringify(publisher),
+    body: JSON.stringify(platform),
     headers: { 'Content-Type': 'application/json' },
   })
     .then((response) => {
@@ -24,11 +24,11 @@ form.addEventListener('submit', (event) => {
       }
     })
     .then((results) => {
-      console.log(`Added publisher with id ${results.id}`);
+      console.log(`Added Platform with id ${results.id}`);
       let notifyElement = document.querySelector('#notifications');
       let message = document.createElement('p');
       message.classList.add('notification-fade');
-      message.textContent = `Added publisher with id ${results.id}`;
+      message.textContent = `Added Platform with id ${results.id}`;
       notifyElement.replaceChildren(message);
       setTimeout(() => message.classList.add('hidden'), 500);
       submitButton.disabled = false;

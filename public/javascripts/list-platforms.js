@@ -1,4 +1,4 @@
-import { genresUrl } from './config.js';
+import { platformsUrl } from './config.js';
 
 async function fetchData(url) {
   try {
@@ -14,15 +14,16 @@ async function fetchData(url) {
   }
 }
 
-function renderTable(genres) {
-  let tableBody = document.querySelector('#genres-container tbody');
+function renderTable(platforms) {
+  let tableBody = document.querySelector('#platforms-container tbody');
   let rows = [];
-  for (let genre of genres) {
+  for (let platform of platforms) {
     let row = document.createElement('tr');
     row.insertAdjacentHTML(
       `beforeend`,
       `
-    <td>${genre.genreName}</td>
+    <td>${platform.id}</td>
+    <td>${platform.platformName}</td>
     `
     );
     rows.push(row);
@@ -30,4 +31,4 @@ function renderTable(genres) {
   tableBody.append(...rows);
 }
 
-fetchData(genresUrl);
+fetchData(platformsUrl);

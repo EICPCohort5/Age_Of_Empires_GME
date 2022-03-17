@@ -29,24 +29,20 @@
     </nav>
     <form id="add-game-form">
       <div>
-        <label for="game-title" class="form-label">Title</label>
-        <input type="text" name="title" id="game-title" class="form-control" required>
+        <label for="game-title" class="form-label">Game Name</label>
+        <input type="text" name="gameName" id="game-title" class="form-control" required>
       </div>
       <div class="mt-2">
-        <label for="publish-date" class="form-label">Date</label>
-        <input type="date" name="date" id="publish-date" class="form-control" required>
-      </div>
-      <div class="mt-2">
-        <label for="file-size" class="form-label">File Size</label>
-        <input type="number" name="size" id="file-size" class="form-control" required>
+        <label for="publisher" class="form-label">Publisher</label>
+        <select name="Publisher" id="publisher-dropdown" class="form-control" disabled></select>
       </div>
       <div class="mt-2">
         <label for="genre" class="form-label">Genre</label>
-        <input type="text" name="genre" id="genre" class="form-control" required>
+        <select name="Genre" id="genre-dropdown" class="form-control" disabled></select>
       </div>
       <div class="mt-2">
-        <label for="game-id" class="form-label">Game ID</label>
-        <input type="text" name="game-id" id="game-id" class="form-control" required>
+        <label for="platforms" class="form-label">Platforms</label>
+        <select name="Platforms" id="platforms-dropdown" class="form-control" multiple disabled></select>
       </div>
       <div class="mt-2"><button type="submit" class="btn btn-primary">Add Game</button></div>
     </form>
@@ -54,7 +50,7 @@
       <div class="col" id="notifications"></div>
     </div>
   </main>
-  <script src="javascripts/games.js" type="module"></script>
+  <script src="javascripts/add-game.js" type="module"></script>
 </body>
 
 </html>

@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
-app.use('/generes', genresRouter);
+app.use('/genres', genresRouter);
 app.use('/platforms', platformsRouter);
 app.use('/publishers', publishersRouter);
 
